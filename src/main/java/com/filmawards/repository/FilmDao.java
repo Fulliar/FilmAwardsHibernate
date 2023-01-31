@@ -27,21 +27,22 @@ public class FilmDao {
         List<Object[]> list = null;
         try{
             EntityManager entityManager = HibernateUtil.getSessionFactory().createEntityManager();
-            String query = "select aw.awardName, fi.filmName, fc.filmCategoryName, d.directorName,at.actorName from film_award as fa\n" +
+            String query = "select aw.awardName, fi.filmName, fc.filmCategoryName,d.directorName,at.actorName from film_award as fa\n" +
                     "inner join award as aw\n" +
-                    "on fa.Film_id = aw.id\n" +
+                    "on fa.awards_id = aw.id\n" +
                     "inner join film as fi\n" +
                     "on fi.id = fa.Film_id\n" +
                     "inner join film_filmcategory as ff\n" +
-                    "on fi.id = ff.Film_id\n" +
+                    "on ff.Film_id = fa.Film_id\n" +
                     "inner join filmcategory as fc\n" +
-                    "on ff.Film_id = fc.id\n" +
+                    "on ff.filmCategory_id = fc.id\n" +
                     "inner join director as d\n" +
                     "on d.id = fi.director_id\n" +
                     "inner join film_actor as fy\n" +
-                    "on fi.id = fy.Film_id \n" +
+                    "on fi.id = fy.Film_id\n" +
                     "inner join actor as at\n" +
-                    "on at.id = fy.actors_id";
+                    "on at.id = fy.actors_id\n" +
+                    "where fi.director_id is not null";
             list = entityManager.createNativeQuery(query).getResultList();
             for(Object[] item:list) {
                 System.out.println(

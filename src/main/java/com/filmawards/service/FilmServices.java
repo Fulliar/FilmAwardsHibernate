@@ -23,10 +23,10 @@ public class FilmServices {
     public static void save(){
         try {
             Director director1 = new Director("Director1");
-            Actor actor1 = new Actor("Actor1");
+            Actor actor1 = new Actor("Johny Depp");
             FilmCategory filmCategory1 = new FilmCategory("FilmCategory1");
             Award award1 = new Award("Award1");
-            Film film1 = new Film("Film1", director1, Arrays.asList(actor1), Arrays.asList(filmCategory1), Arrays.asList(award1));
+            Film film1 = new Film("ASDAD", director1, Arrays.asList(actor1), Arrays.asList(filmCategory1), Arrays.asList(award1));
             filmDao.save(film1);
         }catch (Exception e){
             e.printStackTrace();

@@ -23,7 +23,6 @@ public class Film {
     private Director director;
 
     @OneToMany (cascade = CascadeType.ALL)
-
     private List<Actor> actors;
 
     @OneToMany (cascade = CascadeType.ALL)
